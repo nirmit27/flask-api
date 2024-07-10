@@ -1,0 +1,8 @@
+{
+  "1": { "name": "Jim Halpert", "age": 26, "role": "Sales Representative" },
+  "2": { "name": "Pam Beesly", "age": 25, "role": "Receptionist" },
+  "3": { "name": "Michael Scott", "age": 40, "role": "Regional Manager" },
+  "4": { "name": "Josh Porter", "age": 35, "role": "Regional Manager" },
+  "5": { "name": "Dwight Schrute", "age": 30, "role": "Sales Representative" },
+  "6": { "name": "Ryan Howard", "age": 35, "role": "Sales Representative" }
+}

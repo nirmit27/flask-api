@@ -1,13 +1,41 @@
+import json
 from time import sleep
-from flask import Flask, render_template, url_for, redirect, request, jsonify
+from flask import Flask, render_template, url_for, redirect, request
 
 app = Flask(__name__)
 
+# Page Routes
+
 
 @app.route("/", methods=["GET"])
-@app.route("/home", methods=["GET"])
 def home():
-    return "<h1>Home Sweet Home!</h1>"
+    return render_template("home.html", title="Home")
+
+
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template("about.html", title="About")
+
+
+@app.route("/employees", methods=["GET"])
+def employees():
+    data: dict[int, dict] = {}
+    with open("data.json", 'r') as fp:
+        data = json.load(fp)
+
+    return render_template("employees.html", title="Employees", data=data)
+
+
+@app.route("/careers", methods=["GET"])
+def careers():
+    return render_template("careers.html", title="Careers")
+
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    return render_template("contact.html", title="Contact Us")
+
+# Misc. Routes
 
 
 @app.route("/welcome/<string:name>", methods=["GET"])
@@ -15,9 +43,9 @@ def welcome(name):
     return f"<h1>Welcome, {name.title()}!</h1>"
 
 
-@app.route("/square/<int:num>", methods=["GET"])
+@app.route("/even-odd/<int:num>", methods=["GET"])
 def square(num):
-    return f"<h1>{num} squared equals {num ** 2}</h1>"
+    return render_template("even-odd.html", title="Even-Odd", num=num)
 
 
 @app.route("/sum/<int:num1>/<int:num2>", methods=["GET"])

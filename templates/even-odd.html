@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+    {% if num == 0 %}
+    <h3>{{ num }} is neither even nor odd.</h3>
+    {% elif num % 2 %}
+    <h3>{{ num }} is odd.</h3>
+    {% else %}
+    <h3>{{ num }} is even.</h3>
+    {% endif %}
+</div>
+{% endblock content %}

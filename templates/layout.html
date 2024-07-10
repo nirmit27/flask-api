@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={{ url_for("static", filename="styles.css" ) }}>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href={{ url_for("home") }}>Home</a></li>
+            <li><a href={{ url_for("about") }}>About</a></li>
+            <li><a href={{ url_for("employees") }}>Employees</a></li>
+            <li><a href={{ url_for("careers") }}>Careers</a></li>
+            <li><a href={{ url_for("contact") }}>Contact Us</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+
+    <footer>
+        Made with &#129505; by <a href="https://github.com/nirmit27" target="_blank" rel="noreferrer noopener">Nirmit
+            Mishra</a>.
+    </footer>
+</body>
+
+</html>
