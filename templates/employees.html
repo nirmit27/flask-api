@@ -5,7 +5,7 @@
         <h1>Managers</h1>
         <div class="emp-cards two-cols">
             {% for key, value in data.items() %}
-            {% if "manager".title() in value['role'] %}
+            {% if "Manager" in value['role'] %}
 
             <div class="card">
                 <h3>{{ value['name'] }}</h3>
@@ -24,7 +24,7 @@
         <h1>Employees</h1>
         <div class="emp-cards three-cols">
             {% for key, value in data.items() %}
-            {% if "manager".title() not in value['role'] %}
+            {% if "Manager" not in value['role'] %}
 
             <div class="card">
                 <h3>{{ value['name'] }}</h3>
