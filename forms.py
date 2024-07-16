@@ -18,14 +18,14 @@ class SignupForm(FlaskForm):
     gender: SelectField = SelectField("Gender", choices=[
         ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], validators=[Optional()])
     dob: DateField = DateField(
-        "Date of Birth", validators=[Optional()], format='%Y-%m-%d', default=datetime.now())
+        "Date of Birth", validators=[Optional()], format='%d-%m-%y', default=datetime.now())
     submit: SubmitField = SubmitField("Sign up")
 
 
 class LoginForm(FlaskForm):
-    email: StringField = StringField(
-        "Email", validators=[DataRequired(), Email()])
+    username: StringField = StringField("Username", validators=[
+        DataRequired(), Length(2, 20)])
     password: PasswordField = PasswordField(
         "Password", validators=[DataRequired(), Length(8, 16)])
     remember_me: BooleanField = BooleanField("Remember Me")
-    submit: SubmitField = SubmitField("Login")
+    submit: SubmitField = SubmitField("Log in")
