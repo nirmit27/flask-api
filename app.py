@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from forms import SignupForm, LoginForm
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, url_for, redirect, flash, session, request
 
 load_dotenv()
