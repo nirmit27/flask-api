@@ -18,7 +18,7 @@ class SignupForm(FlaskForm):
     gender: SelectField = SelectField("Gender", choices=[
         ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], validators=[Optional()])
     dob: DateField = DateField(
-        "Date of Birth", validators=[Optional()], format='%d-%m-%y', default=datetime.now())
+        "Date of Birth", validators=[Optional()], format=['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y'], default=datetime.now())
     submit: SubmitField = SubmitField("Sign up")
 
 
