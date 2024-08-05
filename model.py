@@ -13,9 +13,6 @@ class User(db.Model, UserMixin):
     dob = db.Column(db.Date, nullable=True)
     gender = db.Column(db.String(10), nullable=True)
 
-    def __repr__(self):
-        return f"<User {self.username}>"
-
 
 if __name__ == "__main__":
     ...
