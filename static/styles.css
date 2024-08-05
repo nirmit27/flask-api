@@ -91,7 +91,7 @@ select {
 
 input:focus,
 select:focus {
-    outline: solid 2px blueviolet;
+    outline: solid 1px blueviolet;
 }
 
 #submit {
