@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<form action="/" method="post" id="create-todo-form" class="w-full max-w-sm mx-auto">
+    <h1 class="create text-2xl font-bold text-center mb-8 text-blue-700">Create Todo</h1>
+    <div class="field mb-6">
+        <label for="title" class="block text-lg font-medium text-gray-700">Title</label>
+        <input type="text" name="title" id="title" placeholder="Enter the title"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+    </div>
+
+    <div class="field mb-6">
+        <label for="content" class="block text-lg font-medium text-gray-700">Content</label>
+        <textarea name="content" id="content" cols="30" rows="10" placeholder="Enter content"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+    </div>
+
+    <div class="field">
+        <input type="submit"
+            class="btn bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-lg transition duration-300 focus:outline-none focus:ring-1 focus:ring-blue-600"
+            value="Create">
+    </div>
+</form>
+
+{% endif %}
+
+{% endblock content %}

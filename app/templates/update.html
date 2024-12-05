@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1 class="text-2xl font-bold text-center mb-8">Update Todo</h1>
+
+<form action="/update-todo/{{todo.id}}" method="post" id="update-todo-form" class="max-w-2xl mx-auto">
+    <div class="field mb-6">
+        <label for="title" class="block text-lg font-medium text-gray-700">Title</label>
+        <input type="text" name="title" id="title" placeholder="Enter the title" value="{{todo.title}}"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+    </div>
+
+    <div class="field mb-6">
+        <label for="content" class="block text-lg font-medium text-gray-700">Content</label>
+        <textarea name="content" id="content" cols="30" rows="10" placeholder="Enter content"
+            class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">{{todo.content}}</textarea>
+    </div>
+
+    <div class="field">
+        <input type="submit"
+            class="btn bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300"
+            value="Update">
+    </div>
+</form>
+
+{% endif %}
+
+{% endblock content %}

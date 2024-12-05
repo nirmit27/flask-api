@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="main p-6">
+    <div class="options flex justify-center items-center space-x-6 mb-8">
+        <a href="{{ url_for('view.create_todo') }}"
+            class="text-white bg-blue-500 hover:bg-blue-700 px-6 py-3 rounded-lg shadow-lg">
+            Create Todo
+        </a>
+        <!-- <a href="{{ url_for('view.home') }}"
+            class="text-white bg-green-500 hover:bg-green-700 px-6 py-3 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105">
+            List Todos
+        </a> -->
+    </div>
+
+    {% if user.todos %}
+    <div class="todo-list space-y-4">
+
+        {% for todo in user.todos %}
+
+        <div class="todo-box flex justify-between items-center p-4 bg-white rounded-lg shadow-lg">
+            <div class="text flex-1">
+                <div class="title font-bold text-xl mb-2">{{ todo.title }}</div>
+                <div class="message text-white">{{ todo.content }}</div>
+            </div>
+            <div class="icons flex space-x-4">
+                <a href="/update-todo/{{ todo.id }}" class="text-yellow-500 hover:text-yellow-700">
+                    <i class="fa fa-edit text-xl"></i>
+                </a>
+                <button class="delete-btn text-red-500 hover:text-red-700" onclick="deleteTodo({{ todo.id }})">
+                    <p class="text-xl">Delete</p>
+                </button>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

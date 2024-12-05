@@ -1,0 +1,92 @@
+::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+/* Flash messages container */
+#flash-messages-container {
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    z-index: 9999;
+}
+
+/* Base styles for messages */
+.message {
+    position: relative;
+    padding: 15px 35px 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    color: white;
+    text-align: left;
+    background-color: #2563ea;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show class for visibility */
+.message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Close button styles */
+.message .close-btn {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Close button hover effect */
+.message .close-btn:hover {
+    color: #ccc;
+}
+
+/* Success, error, warning, info styles */
+.message.success {
+    background-color: #28a745;
+}
+
+.message.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+.message.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.message.info {
+    background-color: #17a2b8;
+}
+
+.error {
+    font-size: 0.9rem;
+    color: red;
+    font-weight: 600;
+}

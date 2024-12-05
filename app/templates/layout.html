@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href={{ url_for("static", filename="styles.css" ) }}>
+
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href={{ url_for("static", filename="apple-touch-icon.png" ) }}>
+  <link rel="icon" type="image/png" sizes="32x32" href={{ url_for("static", filename="favicon-32x32.png" ) }}>
+  <link rel="icon" type="image/png" sizes="16x16" href={{ url_for("static", filename="favicon-16x16.png" ) }}>
+  <link rel="manifest" href={{ url_for("static", filename="site.webmanifest" ) }}>
+
+  <title>ToDo App</title>
+</head>
+
+<body class="">
+  <!-- NAVBAR -->
+  <nav class="bg-blue-600 text-white py-4 px-6 flex justify-between items-center">
+    <div class="text-2xl font-bold">
+      <a href="/" class="hover:underline">ToDo App</a>
+    </div>
+
+    <div class="space-x-4">
+      <a href="/" class="hover:underline">Home</a>
+      <a href="/about" class="hover:underline">About</a>
+      <a href="/contact" class="hover:underline">Contact</a>
+    </div>
+
+    <div>
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('auth.logout') }}"
+        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300">Logout</a>
+      {% else %}
+      <a href="{{ url_for('auth.login') }}"
+        class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- FLASH MESSAGES -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+
+  <div id="flash-messages-container">
+
+    {% for category, message in messages %}
+
+    <div class="message {{ category }}" id="flash-message-{{ loop.index }}">
+      {{ message }}
+      <button class="close-btn" onclick="closeMessage('flash-message-{{ loop.index }}')">&times;</button>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+  {% endif %}
+  {% endwith %}
+
+
+  <!-- MAIN CONTENT -->
+  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+
+    {% block content %}
+    {% endblock content %}
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    &copy; 2024 ToDo App. All rights reserved.
+  </footer>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
