@@ -1,3 +1,5 @@
 .vercel
 .env
 __pycache__
+instance/todo.db
+instance/users_db.db
