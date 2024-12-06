@@ -5,7 +5,12 @@ from app.models import Todo, db
 view_bp = Blueprint("view", __name__)
 
 
-@view_bp.route("", methods=["GET", "POST"])
+@view_bp.route("", methods=["GET"])
+def landing():
+    return render_template("landing.html"), 200
+
+
+@view_bp.route("/list", methods=["GET", "POST"])
 @login_required
 def home():
     if request.method == "POST":
@@ -42,6 +47,7 @@ def update_todo(id):
         todo.is_done = request.form.get("is-done")
 
         db.session.commit()
+        return render_template("home.html", user=current_user), 201
 
     return render_template("update.html", todo=todo, user=current_user), 200
 

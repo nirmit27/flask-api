@@ -4,9 +4,8 @@
 
 {% if user.is_authenticated %}
 
-<h1 class="text-2xl font-bold text-center mb-8">Update Todo</h1>
-
-<form action="/update-todo/{{todo.id}}" method="post" id="update-todo-form" class="max-w-2xl mx-auto">
+<form action="/update-todo/{{todo.id}}" method="post" id="update-todo-form" class="w-full max-w-sm mx-auto -mt-10">
+    <h1 class="create text-2xl font-bold text-center mb-8 text-blue-700">Update Todo</h1>
     <div class="field mb-6">
         <label for="title" class="block text-lg font-medium text-gray-700">Title</label>
         <input type="text" name="title" id="title" placeholder="Enter the title" value="{{todo.title}}"

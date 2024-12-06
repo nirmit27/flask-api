@@ -14,7 +14,7 @@ def login():
     if login_form.validate_on_submit():
         user = User.query.filter_by(username=login_form.username.data).first()
 
-        if user and check_password_hash(user.password, login_form.password.data):
+        if user and check_password_hash(user.password, login_form.password.data): # type: ignore
             flash(f"Welcome back, {login_form.username.data}!", category="success")
 
             login_user(user, remember=True)
@@ -22,7 +22,7 @@ def login():
 
         flash("Invalid username or password.")
 
-    return render_template("login.html", form=login_form)  # login form
+    return render_template("login.html", form=login_form, title="Log in")  # login form
 
 
 @auth_bp.route("/signup", methods=["GET", "POST"])
@@ -33,7 +33,7 @@ def signup():
         username = signup_form.username.data
         email = signup_form.email.data
         hashed_password = generate_password_hash(
-            signup_form.password.data, method="pbkdf2", salt_length=16
+            signup_form.password.data, method="pbkdf2", salt_length=16 # type: ignore
         )
         new_user = User(username=username, email=email, password=hashed_password)  # type: ignore
 
@@ -43,7 +43,7 @@ def signup():
         flash("Registration successful! Please log in.")
         return redirect(url_for("auth.login"))  # redirecting to the login page
 
-    return render_template("signup.html", form=signup_form)  # sign-up form
+    return render_template("signup.html", form=signup_form, title="Sign up")  # sign-up form
 
 
 @auth_bp.route("/logout")

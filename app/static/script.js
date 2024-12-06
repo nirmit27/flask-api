@@ -38,6 +38,6 @@ function deleteTodo(todoId) {
     },
     body: JSON.stringify({ id: todoId }),
   }).then((res) => {
-    window.location.href = "/";
+    window.location.href = "/list";
   });
 }
